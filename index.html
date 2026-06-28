@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aniket Kurade — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- PRELOADER SCREEN -->
+  <div id="page1" role="status" aria-live="polite">
+    <p class="welcome-text">WELCOME TO MY WORLD</p>
+    <div class="loader-track"
+      style="width:300px;height:4px;background:#333333 !important;position:relative;overflow:hidden;">
+
+      <div id="pbar"
+        style="background:#00e5ff !important;height:100% !important;width:0%;animation:load 2.5s cubic-bezier(0.4,0,0.2,1) forwards;">
+      </div>
+    </div>
+    <p class="progress-label" id="loader-status">Initializing...</p>
+  </div>
+
+  <!-- MAIN PORTFOLIO -->
+  <div id="page2" aria-hidden="true">
+    <nav class="p2-nav" aria-label="Site navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#resume">Resume</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <main class="p2-body" id="home">
+      <div class="hero-content">
+        <!-- LEFT: TEXT PROFILE -->
+        <div class="p2-left">
+          <p class="eyebrow">Hello,I am</p>
+          <h1 class="p2-name">ANIKET KURADE</h1>
+          <p class="p2-title">Tech Entusiast & Developer</p>
+          <p class="p2-desc">
+            Building reliable, scalable software solutions.<br>
+            Crafting clean code and thoughtful systems.<br>
+            Solving real-world problems with technology.
+          </p>
+
+          <div class="pills" role="list" aria-label="Expertise">
+            <span class="pill" role="listitem">Python</span>
+            <span class="pill" role="listitem">Problem Solver</span>
+            <span class="pill" role="listitem">Software Engineering</span>
+            <span class="pill" role="listitem">Vibe Coder</span>
+          </div>
+
+          <div class="socials">
+            <div class="social-group">
+              <p class="social-group-label">Connect with me </p>
+              <div class="social-icons">
+                <a href="https://www.linkedin.com/in/aniket-kurade-ab979a336?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                  target="_blank" rel="noopener" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+                <a href="mailto:aniketkurade653@gmail.com" aria-label="Email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <polyline points="2,4 12,13 22,4" />
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/kurade614?igsh=eWhkOWRsc2RwdDUw" target="_blank" rel="noopener"
+                  aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="social-divider" aria-hidden="true"></div>
+
+            <div class="social-group">
+              <p class="social-group-label">my work</p>
+              <div class="social-icons">
+                <a href="https://github.com/AniketKurade06" target="_blank" rel="noopener" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: PROFILE IMAGE -->
+        <div class="p2-right">
+          <div class="portrait-glow"></div>
+          <img class="portrait-img" src="my-img.png" alt="Portrait of Aniket Kurade" />
+        </div>
+      </div>
+  </div>
+  </main>
+
+  <section class="about-section reveal" id="about">
+    <h2 class="about-header" style="color:#A855F7;">ABOUT ME</h2>
+    <div class="about-container">
+      <!-- LEFT: 3D CHARACTER with AURA -->
+      <div class="about-left">
+        <div class="character-glow-container">
+          <div class="character-aura"></div>
+          <img src="about-me-3d.png" alt="3D Character" class="about-character">
+        </div>
+      </div>
+
+      <!-- VERTICAL PARTITION -->
+      <div class="about-divider" aria-hidden="true"></div>
+
+      <!-- RIGHT: TEXT CONTENT -->
+      <div class="about-right">
+        <div class="about-text">
+          <p>
+          <h3 style="color:#A855F7;"><u>Aspiring Tech Generalist | Fast Learner & Explorer</u></h3><br>
+
+          Hi, I’m Aniket Kurade, a final-year Bachelor of Computer Applications (BCA) student with a passion for
+          exploring the vast horizons of technology.
+          Rather than confining myself to a single box, I enjoy diving into various domains to understand how the
+          digital ecosystem fits together.
+          I hold a foundational understanding across multiple tech fields and find myself deeply fascinated by the
+          intersections of Artificial Intelligence, DevOps, Cyber Security, and the Internet of Things (IoT).
+          As a natural fast learner and relentless explorer, I treat every complex technical challenge as a new
+          landscape to navigate.
+          When I'm not coding or reading up on emerging tech, you can find me on the sports field or traveling, both
+          of which keep my perspective fresh, adaptive, and ready for the next big adventure.</p>
+        </div>
+      </div>
+    </div>
+    <section class="tech-stack-section reveal" id="tech-stack">
+      <h2 class="tech-stack-header" style="color:#A855F7;"><span>💻</span>MY TECH STACK</h2>
+      <div class="tech-horizontal-row">
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+          <span>HTML5</span>
+        </div>
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+          <span>CSS3</span>
+        </div>
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" />
+          <span>JavaScript</span>
+        </div>
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+          <span>React</span>
+        </div>
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+          <span>Java</span>
+        </div>
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+          <span>Python</span>
+        </div>
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+          <span>Git</span>
+        </div>
+        <div class="tech-capsule">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+          <span>GitHub</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS & METRICS GRID -->
+    <section class="stats-section reveal">
+      <div class="stats-grid">
+        <div class="stat-card" style="--accent: #a855f7;">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number">not yet</h3>
+            <p class="stat-label">Projects Completed</p>
+          </div>
+        </div>
+        <div class="stat-card" style="--accent: #00c6ff;">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number">5+</h3>
+            <p class="stat-label">Technologies Mastered</p>
+          </div>
+        </div>
+        <div class="stat-card" style="--accent: #facc15;">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+              <path d="M4 22h16" />
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+            </svg>
+          </div>
+          <div class="stat-content">
+            <h3 class="stat-number">10+</h3>
+            <p class="stat-label">LeetCode Solved</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOBBIES SECTION -->
+    <section class="hobbies-section reveal">
+      <div class="hobbies-container">
+        <h2 class="horizontal-title" style="color:#A855F7;"><span>🎨</span>HOBBIES</h2>
+        <div class="hobbies-list">
+          <div class="hobby-tag">
+            <span class="hobby-icon">♫</span> Listening to Music
+          </div>
+          <div class="hobby-tag">
+            <span class="hobby-icon">✈</span> Travelling
+          </div>
+          <div class="hobby-tag">
+            <span class="hobby-icon">🎮</span> Gaming
+          </div>
+          <div class="hobby-tag">
+            <span class="hobby-icon">⚽</span> Sports
+          </div>
+          <div class="hobby-tag">
+            <span class="hobby-icon">💡</span> Learning New Tech
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section reveal" id="projects">
+      <h2 class="section-header" style="color:#A855F7;"><span>🚀</span>MY PROJECTS</h2>
+      <div class="projects-container">
+        <div class="project-placeholder">
+          <p>Project 1 in progress...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills-section reveal" id="skills">
+      <h2 class="section-header" style="color:#A855F7;"><span>⚡</span>SKILLS</h2>
+      <div class="skills-dashboard">
+        <!-- Programming Languages -->
+        <div class="skill-group">
+          <h3 class="group-title">Programming Languages</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info"><span>Python</span><span>90%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 90%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Java</span><span>85%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 85%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>C</span><span>80%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 80%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Bash</span><span>75%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 75%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web Technologies -->
+        <div class="skill-group">
+          <h3 class="group-title">Web Technologies</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info"><span>HTML</span><span>95%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 95%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>CSS</span><span>90%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 90%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>JS</span><span>92%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 92%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>UI/UX</span><span>85%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 85%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Databases & Tools -->
+        <div class="skill-group">
+          <h3 class="group-title">Databases & Tools</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info"><span>SQL</span><span>88%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 88%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Git</span><span>90%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 90%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Concepts -->
+        <div class="skill-group">
+          <h3 class="group-title">Core Concepts</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info"><span>Data Structures</span><span>85%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 85%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Algorithm</span><span>82%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 82%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skill-group">
+          <h3 class="group-title">Soft Skills</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info"><span>Teamwork</span><span>95%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 95%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Problem Solving</span><span>98%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 98%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Creativity</span><span>90%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 90%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Adaptability</span><span>92%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 92%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Communication</span><span>88%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 88%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Leadership</span><span>85%</span></div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 85%; --skill-color: #6366f1;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="resume-section" id="resume">
+        <div class="resume-container">
+          <h2 class="horizontal-title" style="color:#A855F7;"><span>📄</span>MY RESUME</h2>
+          <div class="resume-content">
+            <a href="#" class="btn-resume-gradient" download><!--resume download link-->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- PROFILE BLOG & EDUCATION SECTION -->
+      <section class="profile-education-section" id="blog">
+        <div class="profile-education-container">
+          <div class="profile-blog-card">
+            <div class="blog-placeholder">
+              <p class="placeholder-text" style="align-items:center;">
+              <h1>ANIKET K KURADE</h1><br>🎓 B.C.A. — Bachelor of Computer Applications<br>
+              📍 Belagavi,Karnataka, India<br>
+              ✉️ your-aniketkurade@gmail.com <br> 📱 +91 8088105935<br>
+
+              Final-year BCA student and agile fast learner focused on the future of technology.
+              ⚡ Exploring the critical intersections of Artificial Intelligence 🧠,
+              DevOps automation 🔄, Cloud Security 🔐, and interconnected IoT solutions 🔌
+              to create meaningful digital experiences.</p>
+            </div>
+          </div>
+
+          <section class="profile-education-section" id="education">
+            <div class="profile-education-container">
+              <h2 class="education-header" style="color:#A855F7;"><span>🎓</span>EDUCATION</h2>
+
+              <div class="education-cards-wrapper">
+
+                <div class="profile-blog-card">
+                  <div class="card-meta-row">
+                    <span class="education-badge">Degree</span>
+                    <span class="timeline-date">2024 - 2027</span>
+                  </div>
+                  <h3 class="institution-title">Jain Degree College</h3>
+                </div>
+
+                <div class="profile-blog-card">
+                  <div class="card-meta-row">
+                    <span class="education-badge">Higher Secondary</span>
+                    <span class="timeline-date">2022 - 2024</span>
+                  </div>
+                  <h3 class="institution-title">KENDRIYA VIDYALAYA No:1 ATS SAMBRA BELAGAVI</h3>
+                </div>
+
+                <div class="profile-blog-card">
+                  <div class="card-meta-row">
+                    <span class="education-badge">Secondary</span>
+                    <span class="timeline-date">2021 - 2022</span>
+                  </div>
+                  <h3 class="institution-title">KENDRIYA VIDYALAYA No:3 MACHHE BELAGAVI</h3>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- CERTIFICATES SECTION -->
+          <section class="certificates-section" id="certificates">
+            <h2 class="section-header" style="color:#A855F7;"><span>📜</span>CERTIFICATES</h2>
+            <div class="certificates-container">
+              <div class="filter-tabs">
+                <span class="filter-pill active">Technical</span>
+              </div>
+              <div class="certificates-grid">
+                <div class="cert-card-placeholder">Certificate Placeholder</div>
+                <div class="cert-card-placeholder">Certificate Placeholder</div>
+                <div class="cert-card-placeholder">Certificate Placeholder</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- GET IN TOUCH / CONTACT SECTION -->
+          <section class="contact-section" id="contact">
+            <div class="contact-grid">
+              <div class="contact-info-col">
+                <h2 class="connect-title">Let's Connect & Collaborate <span class="heart-icon">💜</span></h2>
+                <p class="connect-subtitle">Whether it's a new project or collaboration — I'd love to hear from you!</p>
+                <div class="info-badges">
+                  <div class="info-badge">
+                    <div class="badge-icon icon-blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                    </div>
+                    <div class="badge-text"><span class="label">Email</span><span
+                        class="value">aniketkurade653@gmail.com</span></div>
+                  </div>
+                  <div class="info-badge">
+                    <div class="badge-icon icon-purple">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                      </svg>
+                    </div>
+                    <div class="badge-text"><span class="label">Phone</span><span class="value">8088105935</span></div>
+                  </div>
+                  <div class="info-badge">
+                    <div class="badge-icon icon-violet">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                    </div>
+                    <div class="badge-text"><span class="label">Location</span><span class="value">📍
+                        Belagavi,Karnataka, India
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="social-links-row">
+                  <a href="https://www.linkedin.com/in/aniket-kurade-ab979a336?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                    class="social-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                      <rect x="2" y="9" width="4" height="12" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg></a>
+                  <a href="https://github.com/aniketkurade" class="social-circle"><svg viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    </svg></a>
+                </div>
+              </div>
+              <div class="contact-form-col">
+                <h3 class="get-in-touch-title">Get In Touch</h3>
+                <form class="contact-form">
+                  <div class="form-group"><label>Name</label><input type="text" placeholder="Your Name" /></div>
+                  <div class="form-group"><label>Email</label><input type="email" placeholder="Email" /></div>
+                  <div class="form-group"><label>Subject</label><input type="text" placeholder="Project Discussion" />
+                  </div>
+                  <div class="form-group"><label>Message</label><textarea
+                      placeholder="Tell me about your project..."></textarea></div>
+                  <button type="submit" class="btn-send-gradient">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="22" y1="2" x2="11" y2="13" />
+                      <polyline points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <script>
+          // AUTOMATIC PRELOADER LOGIC
+          (function () {
+            const bar = document.getElementById('pbar');
+            const label = document.getElementById('loader-status');
+            const p1 = document.getElementById('page1');
+            const p2 = document.getElementById('page2');
+
+            let startTime = null;
+            const duration = 2500; // 2.5 seconds to match CSS animation
+
+            function updateLoader(timestamp) {
+              if (!startTime) startTime = timestamp;
+              const elapsed = timestamp - startTime;
+
+              // Calculate progress based on time elapsed
+              progress = Math.min((elapsed / duration) * 100, 100);
+
+              bar.style.width = progress + '%';
+
+              // Fluid UI label updates based on time-anchored progress
+              if (progress < 20) label.textContent = "INITIALIZING CORE...";
+              else if (progress < 45) label.textContent = "ANALYZING REPOSITORY...";
+              else if (progress < 70) label.textContent = "CRAFTING INTERFACE...";
+              else if (progress < 95) label.textContent = "ALMOST READY...";
+              else label.textContent = "SYSTEM DEPLOYED.";
+
+              if (progress < 100) {
+                requestAnimationFrame(updateLoader);
+              } else {
+                setTimeout(triggerTransition, 600);
+              }
+            }
+
+            function triggerTransition() {
+              p1.classList.add('fade-out');
+              p2.classList.add('visible');
+              p2.removeAttribute('aria-hidden');
+
+              // Remove preloader from DOM after fade
+              setTimeout(() => {
+                p1.remove();
+              }, 500);
+            }
+
+            // Start the loader
+            requestAnimationFrame(updateLoader);
+          })();
+        </script>
+
+        <script>
+          // ── SCROLL REVEAL — IntersectionObserver ───────────────────────
+          document.addEventListener('DOMContentLoaded', function () {
+            var revealEls = document.querySelectorAll('.reveal');
+
+            if (!revealEls.length) return;
+
+            var observer = new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                threshold: 0,        // fire as soon as 1px enters viewport
+                rootMargin: '0px 0px -40px 0px'  // 40px bottom buffer
+              }
+            );
+
+            revealEls.forEach(function (el) {
+              observer.observe(el);
+            });
+          });
+        </script>
+</body>
+
+</html>
