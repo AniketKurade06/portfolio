@@ -1,122 +1,91 @@
-// Matter.js Tech Stack Animation
-const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Events } = Matter;
-
-// Configuration
-const canvasContainer = document.querySelector('#canvas-container');
-const width = canvasContainer.clientWidth;
-const height = canvasContainer.clientHeight;
-
-// Create engine
-const engine = Engine.create();
-const world = engine.world;
-
-// Create renderer
-const render = Render.create({
-    element: canvasContainer,
-    engine: engine,
-    options: {
-        width: width,
-        height: height,
-        wireframes: false,
-        background: 'transparent'
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Preloader ---
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.remove();
+            }, 500);
+        }, 800); // Short delay for premium feel
     }
-});
 
-Render.run(render);
-
-// Create runner
-const runner = Runner.create();
-Runner.run(runner, engine);
-
-// Boundaries
-const wallOptions = { isStatic: true, render: { visible: false } };
-const ground = Bodies.rectangle(width / 2, height + 25, width, 50, wallOptions);
-const ceiling = Bodies.rectangle(width / 2, -25, width, 50, wallOptions);
-const leftWall = Bodies.rectangle(-25, height / 2, 50, height, wallOptions);
-const rightWall = Bodies.rectangle(width + 25, height / 2, 50, height, wallOptions);
-
-Composite.add(world, [ground, ceiling, leftWall, rightWall]);
-
-// Tech Stack Data
-const techStack = [
-    { name: 'HTML', color: '#E34F26' },
-    { name: 'CSS', color: '#1572B6' },
-    { name: 'JAVA', color: '#007396' },
-    { name: 'PYTHON', color: '#3776AB' },
-    { name: 'C', color: '#A8B9CC' },
-    { name: 'SQL', color: '#4479A1' },
-    { name: 'JS', color: '#F7DF1E' },
-    { name: 'GITHUB', color: '#6e5494' }
-];
-
-// Create circular bodies
-const bubbles = techStack.map((tech, index) => {
-    const radius = Math.max(width * 0.05, 50);
-    const x = Math.random() * (width - radius * 2) + radius;
-    const y = Math.random() * (height - radius * 2) + radius;
-
-    const body = Bodies.circle(x, y, radius, {
-        restitution: 0.6,
-        friction: 0.1,
-        render: {
-            fillStyle: '#FFFFFF',
-            strokeStyle: tech.color,
-            lineWidth: 4
-        }
-    });
-
-    body.techName = tech.name;
-    body.accentColor = tech.color;
-    return body;
-});
-
-Composite.add(world, bubbles);
-
-// Mouse control
-const mouse = Mouse.create(render.canvas);
-const mouseConstraint = MouseConstraint.create(engine, {
-    mouse: mouse,
-    constraint: {
-        stiffness: 0.2,
-        render: {
-            visible: false
-        }
+    // --- Theme Toggle ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    
+    // Check local storage for theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        root.setAttribute('data-theme', 'light');
     }
-});
 
-Composite.add(world, mouseConstraint);
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            if (root.getAttribute('data-theme') === 'light') {
+                root.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                root.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
 
-// Custom rendering for text
-Events.on(render, 'afterRender', () => {
-    const context = render.context;
-    context.font = '700 14px "Inter", sans-serif';
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
+    // --- Mobile Menu Toggle ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    
+    if (mobileMenuBtn && mobileNavOverlay) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNavOverlay.classList.toggle('open');
+        });
 
-    bubbles.forEach(body => {
-        const { x, y } = body.position;
-        const angle = body.angle;
+        // Close menu when clicking a link
+        const mobileLinks = mobileNavOverlay.querySelectorAll('.nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavOverlay.classList.remove('open');
+            });
+        });
+    }
 
-        context.save();
-        context.translate(x, y);
-        context.rotate(angle);
-        context.fillStyle = '#000000';
-        context.fillText(body.techName, 0, 0);
-        context.restore();
-    });
-});
+    // --- Resume Popup Logic ---
+    const downloadResumeBtn = document.getElementById('download-resume-btn');
+    const resumeModal = document.getElementById('resume-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    
+    if (downloadResumeBtn && resumeModal) {
+        downloadResumeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            resumeModal.classList.add('active');
+        });
+    }
+    
+    if (closeModalBtn && resumeModal) {
+        closeModalBtn.addEventListener('click', () => {
+            resumeModal.classList.remove('active');
+        });
+    }
 
-// Handle window resize
-window.addEventListener('resize', () => {
-    const newWidth = canvasContainer.clientWidth;
-    const newHeight = canvasContainer.clientHeight;
+    // --- Scroll Reveal Animations ---
+    const revealElements = document.querySelectorAll('.reveal');
+    if (revealElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
-    render.canvas.width = newWidth;
-    render.canvas.height = newHeight;
-    render.options.width = newWidth;
-    render.options.height = newHeight;
-
-    // Update boundaries
-    Matter.Body.setPosition(ground, { x: newWidth / 2, y: newHeight + 25 });
-    Matter.Body.setPosition(rightWall, { x: newWidth + 25, y: newHeight / 2 });
+        revealElements.forEach(el => {
+            el.style.opacity = '0'; // Ensure they are hidden before reveal
+            observer.observe(el);
+        });
+    }
 });
