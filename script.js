@@ -2,12 +2,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Preloader ---
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        setTimeout(() => {
-            preloader.style.opacity = '0';
+        const loadingPercentageText = document.getElementById('loading-percentage');
+        const loadingBarFill = document.getElementById('loading-bar-fill');
+        
+        if (loadingPercentageText && loadingBarFill) {
+            let progress = 0;
+            const duration = 2000; // 2 seconds animation
+            const intervalTime = 20; // Update every 20ms
+            const step = (100 / (duration / intervalTime));
+
+            const interval = setInterval(() => {
+                progress += step;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    // The Delay: 0.5-second delay
+                    setTimeout(() => {
+                        // The Exit
+                        preloader.style.opacity = '0';
+                        preloader.style.transform = 'translateY(-100%)'; // Slide up
+                        setTimeout(() => {
+                            preloader.remove();
+                        }, 500);
+                    }, 500);
+                }
+                
+                loadingPercentageText.textContent = `${Math.floor(progress)}%`;
+                loadingBarFill.style.width = `${progress}%`;
+            }, intervalTime);
+        } else {
+            // Fallback for pages that might not have the new preloader elements
             setTimeout(() => {
-                preloader.remove();
-            }, 500);
-        }, 800); // Short delay for premium feel
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.remove();
+                }, 500);
+            }, 800);
+        }
     }
 
     // --- Theme Toggle ---

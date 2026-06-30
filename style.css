@@ -83,6 +83,16 @@ a {
   }
 }
 
+@keyframes rotateLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  80% {
+    transform: rotate(-25deg);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -91,31 +101,79 @@ a {
 #preloader {
   position: fixed;
   inset: 0;
-  background: var(--bg-color);
+  background: #000000;
   z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.preloader-welcome {
+  font-size: 100px;
+  margin-bottom: 24px;
+  font-family: var(--font-primary);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.preloader-logo {
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.5s ease;
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 24px;
+
+  /* Add this line to start the animation */
+  animation: rotateLogo 3s linear infinite;
 }
 
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 4px solid var(--surface-color);
-  border-bottom-color: var(--accent-color);
-  border-radius: 50%;
-  animation: rotation 1s linear infinite;
+.preloader-name {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
+.preloader-subtitle {
+  color: #888888;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 48px;
+}
 
-  100% {
-    transform: rotate(360deg);
-  }
+.preloader-loading-area {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preloader-loading-text {
+  display: flex;
+  justify-content: space-between;
+  color: #888888;
+  font-size: 12px;
+}
+
+.preloader-loading-bar-track {
+  width: 100%;
+  height: 2px;
+  background-color: #222222;
+}
+
+.preloader-loading-bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #ffffff;
 }
 
 /* Navigation Bar */
@@ -659,6 +717,55 @@ a {
   transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Container styling */
+.tech-stack-container {
+  background-color: #121212;
+  /* Deep dark background */
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  /* Spacing between the pills */
+  margin-top: 20px;
+  border: 1px solid #333;
+  /* Adds subtle depth */
+  justify-content: center;
+  /* Centers the pills nicely */
+}
+
+/* Individual Pill styling */
+.pill {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  padding: 10px 20px;
+  border-radius: 50px;
+  /* The 'pill' shape */
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #444;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+/* Icon styling inside the pill */
+.pill i {
+  margin-right: 8px;
+  /* Space between icon and text */
+  font-size: 1.2rem;
+}
+
+/* Hover effect */
+.pill:hover {
+  background-color: #3d3d3d;
+  border-color: #ff5722;
+  /* Optional: adds a hint of your brand color */
+  transform: translateY(-3px);
+  /* Makes the pill 'pop' out */
+}
+
 /* Resume Section */
 .resume-section {
   text-align: center;
@@ -732,36 +839,79 @@ a {
   color: var(--text-secondary);
 }
 
-/* Contact Section */
-.contact-section {
-  max-width: 700px;
-  margin: 0 auto;
+/* Contact Section (Split Layout) */
+.contact-split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   width: 100%;
-  text-align: center;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 20px;
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-desc {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
   margin-bottom: 40px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.social-links-left {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.social-links-left .social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--surface-color);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.social-links-left .social-link:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
 }
 
 .contact-form {
   background: var(--surface-color);
-  padding: 40px;
+  padding: 50px;
   border-radius: 24px;
   border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 60px;
-  justify-content: center;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   text-align: left;
 }
 
@@ -780,25 +930,44 @@ a {
   color: var(--text-primary);
   font-family: var(--font-secondary);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1);
 }
 
 .form-group textarea {
-  min-height: 150px;
+  min-height: 160px;
   resize: vertical;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 40px;
+@media (max-width: 992px) {
+  .contact-split-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-left .page-title,
+  .contact-desc {
+    text-align: center !important;
+  }
+
+  .contact-left {
+    padding-right: 0;
+  }
+
+  .social-links-left {
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .contact-form .btn-primary {
+    align-self: center !important;
+  }
 }
 
 .social-links-home {
