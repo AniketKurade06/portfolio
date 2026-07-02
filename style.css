@@ -580,11 +580,18 @@ a {
 }
 
 .project-image-wrapper {
-  position: center;
   width: 100%;
   aspect-ratio: 16/9;
   background: var(--surface-color-hover);
   overflow: hidden;
+}
+
+.project-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Centers and crops the card nicely inside the container */
+  display: block;
 }
 
 .project-image-placeholder {
@@ -661,6 +668,305 @@ a {
   color: var(--text-primary);
 }
 
+/* --- Metrics Section Component Styles --- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.metric-card {
+  background-color: #0a0a0a;
+  /* Matte dark gray */
+  border: 1px solid #1f1f1f;
+  /* Subtle layout border */
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card:hover {
+  border-color: #333333;
+  transform: translateY(-2px);
+}
+
+.metric-icon {
+  width: 36px;
+  height: 36px;
+  color: #737373;
+  margin-bottom: 1.75rem;
+  opacity: 0.7;
+  transition: color 0.2s ease;
+}
+
+.metric-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.metric-number {
+  font-size: 3.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #737373;
+  letter-spacing: -0.01em;
+}
+
+/* Featured Component Variant (Center Card) */
+.metric-card.featured-highlight {
+  background-color: #121212;
+  border-color: #e5e5e5;
+  /* High-contrast titanium border */
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.02);
+}
+
+.metric-card.featured-highlight:hover {
+  border-color: #ffffff;
+}
+
+.metric-card.featured-highlight .metric-icon {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.metric-card.featured-highlight .metric-label {
+  color: #a3a3a3;
+}
+
+/* --- Pure Glassmorphism Dark Theme Component --- */
+.glass-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.75rem;
+  width: 100%;
+  max-width: 1140px;
+  margin: 2.5rem auto 0 auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  .glass-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.glass-metric-card {
+  /* Pure dark glass composition */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background-color: rgba(10, 15, 20, 0.4);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+
+  /* Fine-line edge glow border */
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  border-radius: 0.85rem;
+  padding: 3rem 2rem 2.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Outer soft blue atmosphere shadow */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-metric-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(0, 242, 254, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Icons styling with underlying glass backing disk */
+.glass-metric-icon {
+  width: 52px;
+  height: 52px;
+  padding: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #a1a1aa;
+  /* Secondary slate tint default */
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Center focal highlight styling */
+.glass-metric-icon.highlight {
+  color: #00f2fe;
+  background: rgba(0, 242, 254, 0.05);
+  border-color: rgba(0, 242, 254, 0.2);
+  filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.3));
+}
+
+.glass-metric-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Typography elements alignment */
+.glass-metric-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #e4e4e7;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.glass-metric-number {
+  font-size: 3.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1;
+  margin-top: auto;
+  /* Pushes numeric element to baseline uniformly */
+}
+
+/* LeetCode Special Progress Bar Accessory Component */
+.glass-progress-wrapper {
+  width: 100%;
+  max-width: 160px;
+  margin-top: 1rem;
+}
+
+.glass-progress-text {
+  font-size: 0.7rem;
+  color: #71717a;
+  margin-bottom: 0.35rem;
+}
+
+.glass-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.glass-progress-fill {
+  width: 72%;
+  /* Mock metric progress length */
+  height: 100%;
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  border-radius: 2px;
+}
+
+/* Responsive layout container (Put this inside your existing portfolio section) */
+.metrics-grid {
+  max-width: 1024px;
+  margin: 40px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Switches to 3 side-by-side columns on desktop screens */
+@media (min-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Card Styling - Background matches the dark cards visible in WhatsApp Image 2026-07-02 at 2.56.08 PM.jpeg */
+.metric-card {
+  background-color: #0d0d0d;
+  border: 1px solid #262626;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Subtle interactive hover effect */
+.metric-card:hover {
+  border-color: #404040;
+}
+
+/* SVG Icon Layout */
+.metric-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 4px;
+}
+
+/* Icon Colors */
+.icon-blue {
+  color: #60a5fa;
+}
+
+.icon-amber {
+  color: #fbbf24;
+}
+
+.icon-emerald {
+  color: #34d399;
+}
+
+/* Premium Number Styling */
+.metric-number {
+  margin: 8px 0;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Bottom Metric Titles */
+.metric-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #a3a3a3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 /* Skills Section */
 .skills-container {
   display: grid;
@@ -717,53 +1023,188 @@ a {
   transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Container styling */
-.tech-stack-container {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
   background-color: #121212;
-  /* Deep dark background */
-  padding: 30px;
-  border-radius: 20px;
+  /* Dark background matching the image */
+  margin: 0;
+  font-family: 'Inter', sans-serif;
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  /* Spacing between the pills */
-  margin-top: 20px;
-  border: 1px solid #333;
-  /* Adds subtle depth */
   justify-content: center;
-  /* Centers the pills nicely */
+  align-items: center;
+  min-height: 100vh;
 }
 
-/* Individual Pill styling */
-.pill {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-  padding: 10px 20px;
-  border-radius: 50px;
-  /* The 'pill' shape */
-  font-size: 0.95rem;
-  font-weight: 500;
-  border: 1px solid #444;
+/* Container & Background Card */
+.tech-stack-container {
+  padding: 20px;
+}
+
+.tech-stack-card {
+  background-color: #0b0c10;
+  border: 2px solid #2e3c54;
+  border-radius: 40px;
+  padding: 50px 40px;
+  max-width: 1000px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Typography */
+.tech-stack-title {
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.tech-stack-subtitle {
+  color: #8a92a6;
+  font-size: 1.1rem;
+  margin: 0 0 50px 0;
+}
+
+/* Grid Layout */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Base Badge Styling */
+.tech-badge {
+  background-color: #161920;
+  border: 1.5px solid transparent;
+  border-radius: 25px;
+  padding: 15px 30px;
   display: flex;
   align-items: center;
-  transition: all 0.3s ease;
-  cursor: default;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
 }
 
-/* Icon styling inside the pill */
-.pill i {
-  margin-right: 8px;
-  /* Space between icon and text */
-  font-size: 1.2rem;
+.tech-badge img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: transform 0.3s ease;
 }
 
-/* Hover effect */
-.pill:hover {
-  background-color: #3d3d3d;
-  border-color: #ff5722;
-  /* Optional: adds a hint of your brand color */
-  transform: translateY(-3px);
-  /* Makes the pill 'pop' out */
+.tech-badge span {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Custom Glow & Borders per Technology + Hover States */
+
+/* HTML5 - Orange */
+.tech-badge.html {
+  border-color: rgba(228, 79, 38, 0.3);
+}
+
+.tech-badge.html:hover {
+  border-color: #e44f26;
+  box-shadow: 0 0 20px rgba(228, 79, 38, 0.45);
+}
+
+/* CSS3 - Blue */
+.tech-badge.css {
+  border-color: rgba(21, 114, 182, 0.3);
+}
+
+.tech-badge.css:hover {
+  border-color: #1572b6;
+  box-shadow: 0 0 20px rgba(21, 114, 182, 0.45);
+}
+
+/* Python - Yellow/Blue blend */
+.tech-badge.python {
+  border-color: rgba(255, 222, 85, 0.3);
+}
+
+.tech-badge.python:hover {
+  border-color: #ffde55;
+  box-shadow: 0 0 20px rgba(255, 222, 85, 0.45);
+}
+
+/* Java - Teal/Cyan */
+.tech-badge.java {
+  border-color: rgba(0, 115, 150, 0.3);
+}
+
+.tech-badge.java:hover {
+  border-color: #007396;
+  box-shadow: 0 0 20px rgba(0, 115, 150, 0.45);
+}
+
+/* SQL - Purple */
+.tech-badge.sql {
+  border-color: rgba(155, 89, 182, 0.3);
+}
+
+.tech-badge.sql:hover {
+  border-color: #9b59b6;
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.45);
+}
+
+/* Git - Red/Orange */
+.tech-badge.git {
+  border-color: rgba(240, 80, 50, 0.3);
+}
+
+.tech-badge.git:hover {
+  border-color: #f05032;
+  box-shadow: 0 0 20px rgba(240, 80, 50, 0.45);
+}
+
+/* GitHub - Light Purple/Pink */
+.tech-badge.github {
+  border-color: rgba(162, 106, 194, 0.3);
+}
+
+.tech-badge.github:hover {
+  border-color: #a26ac2;
+  box-shadow: 0 0 20px rgba(162, 106, 194, 0.45);
+}
+
+
+/* JavaScript - Yellow */
+.tech-badge.javascript {
+  border-color: rgba(247, 223, 30, 0.3);
+}
+
+.tech-badge.javascript:hover {
+  border-color: #f7df1e;
+  box-shadow: 0 0 20px rgba(247, 223, 30, 0.45);
+}
+
+/* General Hover Animations */
+.tech-badge:hover {
+  transform: translateY(-4px);
+  background-color: #1a1e27;
+}
+
+.tech-badge:hover img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
 }
 
 /* Resume Section */
@@ -899,13 +1340,26 @@ a {
 }
 
 .contact-form {
-  background: var(--surface-color);
+  /* Semi-transparent background color (White with 5% opacity) */
+  background: rgba(255, 255, 255, 0.05);
+
+  /* The core glassmorphism property - blurs elements behind the form */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari support */
+
+  /* Subtle, semi-transparent white border to create a crisp glass edge */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* Retaining your original layout structures */
   padding: 50px;
   border-radius: 24px;
-  border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  /* Optional: Adds a soft glow behind the card to enhance depth */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .form-group {
