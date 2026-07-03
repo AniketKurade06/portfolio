@@ -172,7 +172,8 @@ a {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 975px;
+  max-width: 450px;
+  gap: 20px;
   height: 60px;
   background: var(--nav-bg);
   backdrop-filter: blur(12px);
@@ -188,20 +189,8 @@ a {
   transition: all 0.3s ease;
 }
 
-.nav-brand {
-  font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
 
-.nav-brand span {
-  color: var(--accent-color);
-}
+
 
 /* --- Pill-Style Navbar --- */
 .nav-links {
@@ -1566,7 +1555,8 @@ body.preloader-finished .navbar {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05); /* Extremely subtle, near-borderless feel */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* Extremely subtle, near-borderless feel */
   border-radius: 16px;
   padding: 35px 20px;
   display: flex;
@@ -1579,7 +1569,8 @@ body.preloader-finished .navbar {
 
 .metric-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.06); /* Soft glow on hover */
+  background: rgba(255, 255, 255, 0.06);
+  /* Soft glow on hover */
 }
 
 /* Metric Icon Sizing & Colors */
@@ -1588,9 +1579,18 @@ body.preloader-finished .navbar {
   height: 36px;
   opacity: 0.9;
 }
-.icon-blue { color: #60a5fa; }
-.icon-amber { color: #fbbf24; }
-.icon-emerald { color: #34d399; }
+
+.icon-blue {
+  color: #60a5fa;
+}
+
+.icon-amber {
+  color: #fbbf24;
+}
+
+.icon-emerald {
+  color: #34d399;
+}
 
 /* Clean, crisp numbers */
 .metric-number {
@@ -1636,7 +1636,8 @@ body.preloader-finished .navbar {
    tapping a link.)
    ---------------------------------------------------------- */
 .mobile-nav-close-btn {
-  display: none; /* hidden on desktop */
+  display: none;
+  /* hidden on desktop */
   position: absolute;
   top: 24px;
   right: 24px;
@@ -1649,6 +1650,7 @@ body.preloader-finished .navbar {
 }
 
 @media (max-width: 768px) {
+
   /* Show close button inside overlay */
   .mobile-nav-close-btn {
     display: block;
@@ -1766,6 +1768,7 @@ body.preloader-finished .navbar {
    Extra-small phones (≤ 480 px)
    ---------------------------------------------------------- */
 @media (max-width: 480px) {
+
   /* ---- Navbar ---- */
   .navbar {
     width: 92%;
