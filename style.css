@@ -1621,3 +1621,213 @@ body.preloader-finished .navbar {
     gap: 16px;
   }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE OVERRIDES
+   All rules below are purely additive – desktop layout is
+   never altered. Changes take effect at ≤ 768 px (tablets /
+   phones) and ≤ 480 px (small phones).
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Close button for the mobile nav overlay
+   (The overlay already has an open/close JS toggle; this
+   adds a visible × button so users can dismiss it without
+   tapping a link.)
+   ---------------------------------------------------------- */
+.mobile-nav-close-btn {
+  display: none; /* hidden on desktop */
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  /* Show close button inside overlay */
+  .mobile-nav-close-btn {
+    display: block;
+  }
+
+  /* ---- Preloader ---- */
+  .preloader-welcome {
+    font-size: clamp(1.6rem, 8vw, 3.5rem);
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  /* ---- General container padding ---- */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* ---- Main content top padding ---- */
+  .main-content {
+    padding-top: 100px;
+  }
+
+  /* ---- Page titles ---- */
+  .page-title {
+    margin-bottom: 36px;
+  }
+
+  /* ---- Hero section ---- */
+  .hero-section {
+    gap: 32px;
+    padding-bottom: 40px;
+  }
+
+  .social-links-home {
+    justify-content: center;
+  }
+
+  .hero-description {
+    font-size: 0.97rem;
+  }
+
+  /* ---- Projects grid: 2-col → 1-col ---- */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* ---- Project card: full height auto ---- */
+  .project-card {
+    height: auto;
+  }
+
+  /* ---- Skills: prevent card overflow on narrow screens ---- */
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* ---- Tech stack card ---- */
+  .tech-stack-card {
+    padding: 32px 20px;
+    border-radius: 24px;
+  }
+
+  .tech-stack-title {
+    font-size: 1.6rem;
+  }
+
+  .tech-stack-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  /* ---- Contact form ---- */
+  .contact-form {
+    padding: 28px 20px;
+  }
+
+  /* ---- Resume card ---- */
+  .resume-card {
+    padding: 40px 24px;
+  }
+
+  /* ---- Certificates grid: already auto-fit, but tighten minmax ---- */
+  .certificates-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* ---- Footer spacer ---- */
+  .footer-spacer {
+    height: 40px;
+  }
+
+  /* ---- Buttons: full-width on narrow screens ---- */
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* ---- Metric number font scale ---- */
+  .metric-number {
+    font-size: 2.2rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   Extra-small phones (≤ 480 px)
+   ---------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* ---- Navbar ---- */
+  .navbar {
+    width: 92%;
+    height: 52px;
+    padding: 0 16px;
+  }
+
+  /* ---- Preloader ---- */
+  .preloader-welcome {
+    font-size: clamp(1.2rem, 7vw, 2rem);
+  }
+
+  .preloader-name {
+    font-size: 22px;
+  }
+
+  .preloader-loading-area {
+    width: 240px;
+  }
+
+  /* ---- Hero ---- */
+  .hero-greeting {
+    font-size: 1rem;
+  }
+
+  /* ---- Tech grid: 2 → 1 column on very small screens ---- */
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* ---- Contact form ---- */
+  .contact-form {
+    padding: 20px 14px;
+    gap: 16px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  /* ---- Certificate card: stack icon & text on very small ---- */
+  .certificate-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  /* ---- Metric number ---- */
+  .metric-number {
+    font-size: 2rem;
+  }
+
+  /* ---- Resume card ---- */
+  .resume-card {
+    padding: 28px 16px;
+  }
+
+  /* ---- Tech stack card ---- */
+  .tech-stack-card {
+    padding: 24px 12px;
+  }
+}

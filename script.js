@@ -80,6 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileNavOverlay.classList.remove('open');
             });
         });
+
+        // Close menu via the × button
+        const mobileNavCloseBtn = document.getElementById('mobile-nav-close');
+        if (mobileNavCloseBtn) {
+            mobileNavCloseBtn.addEventListener('click', () => {
+                mobileNavOverlay.classList.remove('open');
+            });
+        }
+
+        // Close menu when tapping the dark backdrop (outside links)
+        mobileNavOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileNavOverlay) {
+                mobileNavOverlay.classList.remove('open');
+            }
+        });
     }
 
     // --- Resume Popup Logic ---
