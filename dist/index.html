@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aniket Kurade — Software Engineer</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-s849MR4d.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-D-FX_83I.css">
+
+  <script type="module" crossorigin src="/assets/index-D9ZuR9a0.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DLAkHr2f.css">
 </head>
 
 <body class="home-body">
@@ -64,15 +65,22 @@
     <section class="hero-section reveal" style="padding-top: 100px;">
       <div class="hero-content">
         <p class="hero-greeting">Hello, I'm</p>
-        <h1 class="hero-name">Aniket Kurade</h1>
-        <h2 class="hero-subtitle">Tech Enthusiast & Developer</h2>
-        <p class="hero-description">
+        <h1 class="hero-name">Aniket <span class="gradient-name">Kurade</span></h1>
+        <h2 class="hero-subtitle">
+          <div class="carousel-container">
+            <div class="carousel-text"><span>Creating</span> interactive website</div>
+            <div class="carousel-text"><span>Building</span> futerestic websites</div>
+            <div class="carousel-text"><span>Building </span>premieum web apps</div>
+            <div class="carousel-text"><span>Creating </span>interactive website</div>
+          </div>
+        </h2>
+        <p class="hero-description" id="hero-desc">
           A final-year Bachelor of Computer Applications (BCA) student who enjoys software development, problem-solving,
           and creating impactful digital experiences.
         </p>
         <div class="hero-actions">
-          <a href="projects.html" class="btn btn-primary">View My Work</a>
-          <a href="contact.html" class="btn btn-outline">Connect With Me</a>
+          <a href="projects.html" class="btn btn-primary hero-btn">View My Work</a>
+          <a href="contact.html" class="btn btn-outline hero-btn">Connect With Me</a>
         </div>
 
 
@@ -139,18 +147,33 @@
           noiseAmount: 0.1,
           distortion: 0.05
         });
-        
+
         var originalRemove = preloaderEl.remove || preloaderEl.parentNode.removeChild;
-        preloaderEl.remove = function() {
+        preloaderEl.remove = function () {
           cleanupRays();
           if (preloaderEl.parentNode) {
             preloaderEl.parentNode.removeChild(preloaderEl);
+          }
+          // Run one-time typewriter animation for hero description
+          var descEl = document.getElementById('hero-desc');
+          if (descEl) {
+            var finalString = descEl.innerText.trim().replace(/\s+/g, ' ');
+            descEl.innerText = ''; // Clear it initially for typewriter effect
+            var i = 0;
+            var typeInterval = setInterval(function () {
+              if (i < finalString.length) {
+                descEl.innerHTML += finalString.charAt(i);
+                i++;
+              } else {
+                clearInterval(typeInterval);
+              }
+            }, 30); // 30ms per character
           }
         };
       }
     })();
     window.initParticles({
-      particleColors: ["#ffffff"],
+      particleColors: ["rgba(255, 255, 255, 0.8)", "rgba(161, 161, 170, 0.6)", "rgba(82, 82, 91, 0.4)"],
       particleCount: 500,
       particleSpread: 20,
       speed: 0.1,
@@ -164,6 +187,19 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>lucide.createIcons();</script>
+
+  <!-- From Uiverse.io by john_2426 — Juggler Loader Transition Overlay -->
+  <div class="loader-wrapper">
+    <div class="juggler">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm right-arm"></div>
+      <div class="arm left-arm"></div>
+    </div>
+    <div class="ball ball-1"></div>
+    <div class="ball ball-2"></div>
+    <div class="ball ball-3"></div>
+  </div>
 </body>
 
 </html>
