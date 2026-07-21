@@ -7,22 +7,25 @@
   <title>Projects - Aniket Kurade</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Particles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-
+  <div id="particles-bg" class="particles-container"></div>
 
 
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-links">
-      <a href="index.html" class="nav-link"><i class='bx bx-home-alt'></i></a>
-      <a href="about.html" class="nav-link"><i class='bx bx-user'></i></a>
-      <a href="projects.html" class="nav-link active"><i class='bx bx-briefcase-alt-2'></i></a>
-      <a href="skills.html" class="nav-link"><i class='bx bx-code-alt'></i></a>
-      <a href="resume.html" class="nav-link"><i class='bx bx-file'></i></a>
-      <a href="certificates.html" class="nav-link"><i class='bx bx-certification'></i></a>
-      <a href="contact.html" class="nav-link"><i class='bx bx-envelope'></i></a>
+      <a href="index.html" class="nav-link "><i data-lucide="home"></i></a>
+      <a href="about.html" class="nav-link "><i data-lucide="user"></i></a>
+      <a href="projects.html" class="nav-link active"><i data-lucide="briefcase"></i></a>
+      <a href="skills.html" class="nav-link "><i data-lucide="code"></i></a>
+      <a href="resume.html" class="nav-link "><i data-lucide="file-text"></i></a>
+      <a href="certificates.html" class="nav-link "><i data-lucide="award"></i></a>
+      <a href="contact.html" class="nav-link "><i data-lucide="mail"></i></a>
+      <div class="pill-indicator"></div>
     </div>
     <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -45,25 +48,24 @@
 
   <main class="main-content container">
     <section class="reveal" style="padding-top: 100px;">
-      <h1 class="page-title">My <span>Projects</span></h1>
+      <h1 class="gradient-text page-title">My <span>Projects</span></h1>
 
       <div class="projects-grid">
         <!-- Project 1 -->
         <div class="project-card">
           <div class="project-image-wrapper">
-            <img src="portfolio-img-project.png" alt="Portfolio Website" class="project-card-img" />
+            <img src="college-project.png" alt="Portfolio Website" class="project-card-img" />
           </div>
           <div class="project-content">
-            <h3 class="project-title">Portfolio</h3>
-            <p class="project-desc">My professional portfolio website showcasing my skills, project, certificates and
-              etc</p>
+            <h3 class="project-title">College Project</h3>
+            <p class="project-desc">Currently working on my college project</p>
             <div class="tech-badges">
               <span class="tech-badge">html</span>
               <span class="tech-badge">css</span>
               <span class="tech-badge">js</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-btn primary" target="_blank">
+              <a href="javascript:void(0)" class="project-btn primary" onclick="showNotDeployedAlert()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
                 </svg>
@@ -79,6 +81,7 @@
             </div>
           </div>
         </div>
+
         <!-- Project 2 Placeholder -->
         <div class="project-card">
           <div class="project-image-wrapper">
@@ -91,10 +94,9 @@
             <div class="tech-badges">
               <span class="tech-badge">python</span>
               <span class="tech-badge">java</span>
-
             </div>
             <div class="project-links">
-              <a href="#" class="project-btn primary" target="_blank">
+              <a href="javascript:void(0)" class="project-btn primary" onclick="showNotDeployedAlert()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
                 </svg>
@@ -110,7 +112,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="metrics-grid">
@@ -123,7 +124,7 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-19.5 0A2.25 2.25 0 0 0 2.25 15v2.25a2.25 2.25 0 0 0 2.25 2.25h15a2.25 2.25 0 0 0 2.25-2.25V15a2.25 2.25 0 0 0-2.25-2.25m-19.5 0h19.5M4.5 9.75v-1.5A2.25 2.25 0 0 1 6.75 6h4.5l2.25 2.25h4.5A2.25 2.25 0 0 1 21.75 10.5v1.5" />
           </svg>
-          <p class="metric-number">12+</p>
+          <p class="metric-number">2+</p>
           <p class="metric-label">Projects Completed</p>
         </div>
 
@@ -149,7 +150,7 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
           </svg>
-          <p class="metric-number">250+</p>
+          <p class="metric-number">10+</p>
           <p class="metric-label">LeetCode Solved</p>
         </div>
 
@@ -161,6 +162,38 @@
   </main>
 
   <script src="script.js"></script>
+  <script src="Particles.js"></script>
+  <script>
+    initParticles(document.getElementById('particles-bg'), {
+      particleColors: ["#ffffff", "#8B5CF6", "#38BDF8"],
+      particleCount: 500,
+      particleSpread: 10,
+      speed: 0.1,
+      particleBaseSize: 5,
+      moveParticlesOnHover: true,
+      particleHoverFactor: 1.5,
+      alphaParticles: false,
+      sizeRandomness: 1,
+      disableRotation: false
+    });
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>lucide.createIcons();</script>
+
+  <!-- From Uiverse.io by john_2426 — Juggler Loader Transition Overlay -->
+  <div class="loader-wrapper">
+    <div class="juggler">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm right-arm"></div>
+      <div class="arm left-arm"></div>
+    </div>
+    <div class="ball ball-1"></div>
+    <div class="ball ball-2"></div>
+    <div class="ball ball-3"></div>
+  </div>
 </body>
 
 </html>

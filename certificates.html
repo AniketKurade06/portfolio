@@ -7,22 +7,25 @@
   <title>Certificates - Aniket Kurade</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Particles.css">
 </head>
 
 <body>
-
+  <div id="particles-bg" class="particles-container"></div>
 
 
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-links">
-      <a href="index.html" class="nav-link"><i class='bx bx-home-alt'></i></a>
-      <a href="about.html" class="nav-link"><i class='bx bx-user'></i></a>
-      <a href="projects.html" class="nav-link"><i class='bx bx-briefcase-alt-2'></i></a>
-      <a href="skills.html" class="nav-link"><i class='bx bx-code-alt'></i></a>
-      <a href="resume.html" class="nav-link"><i class='bx bx-file'></i></a>
-      <a href="certificates.html" class="nav-link active"><i class='bx bx-certification'></i></a>
-      <a href="contact.html" class="nav-link"><i class='bx bx-envelope'></i></a>
+      <a href="index.html" class="nav-link "><i data-lucide="home"></i></a>
+      <a href="about.html" class="nav-link "><i data-lucide="user"></i></a>
+      <a href="projects.html" class="nav-link "><i data-lucide="briefcase"></i></a>
+      <a href="skills.html" class="nav-link "><i data-lucide="code"></i></a>
+      <a href="resume.html" class="nav-link "><i data-lucide="file-text"></i></a>
+      <a href="certificates.html" class="nav-link active"><i data-lucide="award"></i></a>
+      <a href="contact.html" class="nav-link "><i data-lucide="mail"></i></a>
+      <div class="pill-indicator"></div>
+    </div>
     </div>
     <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -45,7 +48,7 @@
 
   <main class="main-content container">
     <section class="reveal" style="width: 100%;padding-top: 100px;">
-      <h1 class="page-title">My <span>Certificates</span></h1>
+      <h1 class="gradient-text page-title">My <span>Certificates</span></h1>
 
       <div class="certificates-grid">
         <!-- Certificate 1 -->
@@ -93,6 +96,38 @@
   </main>
 
   <script src="script.js"></script>
+  <script src="Particles.js"></script>
+  <script>
+    initParticles(document.getElementById('particles-bg'), {
+      particleColors: ["#ffffff", "#8B5CF6", "#38BDF8"],
+      particleCount: 500,
+      particleSpread: 10,
+      speed: 0.1,
+      particleBaseSize: 5,
+      moveParticlesOnHover: true,
+      particleHoverFactor: 1.5,
+      alphaParticles: false,
+      sizeRandomness: 1,
+      disableRotation: false
+    });
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>lucide.createIcons();</script>
+
+  <!-- From Uiverse.io by john_2426 — Juggler Loader Transition Overlay -->
+  <div class="loader-wrapper">
+    <div class="juggler">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm right-arm"></div>
+      <div class="arm left-arm"></div>
+    </div>
+    <div class="ball ball-1"></div>
+    <div class="ball ball-2"></div>
+    <div class="ball ball-3"></div>
+  </div>
 </body>
 
 </html>

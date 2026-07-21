@@ -7,22 +7,25 @@
   <title>About - Aniket Kurade</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Particles.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 
 <body>
-
+  <div id="particles-bg" class="particles-container"></div>
 
 
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-links">
-      <a href="index.html" class="nav-link"><i class='bx bx-home-alt'></i></a>
-      <a href="about.html" class="nav-link active"><i class='bx bx-user'></i></a>
-      <a href="projects.html" class="nav-link"><i class='bx bx-briefcase-alt-2'></i></a>
-      <a href="skills.html" class="nav-link"><i class='bx bx-code-alt'></i> </a>
-      <a href="resume.html" class="nav-link"><i class='bx bx-file'></i> </a>
-      <a href="certificates.html" class="nav-link"><i class='bx bx-certification'></i> </a>
-      <a href="contact.html" class="nav-link"><i class='bx bx-envelope'></i> </a>
+      <a href="index.html" class="nav-link "><i data-lucide="home"></i></a>
+      <a href="about.html" class="nav-link active"><i data-lucide="user"></i></a>
+      <a href="projects.html" class="nav-link "><i data-lucide="briefcase"></i></a>
+      <a href="skills.html" class="nav-link "><i data-lucide="code"></i></a>
+      <a href="resume.html" class="nav-link "><i data-lucide="file-text"></i></a>
+      <a href="certificates.html" class="nav-link "><i data-lucide="award"></i></a>
+      <a href="contact.html" class="nav-link "><i data-lucide="mail"></i></a>
+      <div class="pill-indicator"></div>
     </div>
     <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -44,8 +47,8 @@
   </div>
 
   <main class="main-content container">
-    <section class="reveal" style="padding-top: 100px;">
-      <h1 class="page-title">About <span>Me</span></h1>
+    <section class="reveal" style="width: 100%; padding-top: 100px;">
+      <h1 class="gradient-text page-title">About <span>Me</span></h1>
 
       <div class="about-grid">
         <div class="about-content">
@@ -66,34 +69,135 @@
           </p>
         </div>
 
-        <div class="education-timeline">
-          <h2 style="margin-bottom: 16px; font-size: 1.5rem;">Education Journey</h2>
+        <div class="viewer-container"
+          style="width: 100%; height: 600px; position: relative; background: transparent; border: 0 !important; outline: none !important; box-shadow: none !important; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;border:none; outline:none;">
 
-          <div class="timeline-item">
-            <p class="timeline-date">2024 - 2027</p>
-            <h3 class="timeline-title">Bachelor of Computer Applications</h3>
-            <p class="timeline-subtitle">Jain Degree College</p>
-          </div>
+          <model-viewer src="portfolio-avatar.glb" poster="avatar-poster.webp" loading="eager" reveal="auto"
+            animation-name="mixamo.com" autoplay camera-controls auto-rotate disable-zoom
+            min-camera-orbit="auto 80deg auto" max-camera-orbit="auto 90deg auto" environment-image="neutral"
+            shadow-intensity="0.5" exposure="1.0" interaction-prompt="none" scale="11.0 11.0 11.0"
+            camera-target="-0.2m 0m 0m"
+            style="width: 100%; height: 100%; background-color: transparent; border: none; outline: none; --poster-color: transparent;">
 
-          <div class="timeline-item">
-            <p class="timeline-date">2022 - 2024</p>
-            <h3 class="timeline-title">Higher Secondary</h3>
-            <p class="timeline-subtitle">Kendriya Vidyalaya No:1 ATS Sambra Belagavi</p>
-          </div>
 
-          <div class="timeline-item">
-            <p class="timeline-date">2021 - 2022</p>
-            <h3 class="timeline-title">Secondary</h3>
-            <p class="timeline-subtitle">Kendriya Vidyalaya No:3 Machhe Belagavi</p>
+            <div
+              style="font-size:1.5rem; color: var(--text-secondary); text-align: center; margin: 8px 0 0 0; line-height: 1;">
+              (scroll for rotating)
+
+            </div>
+          </model-viewer>
+        </div>
+    </section>
+
+    <!-- NEW EDUCATION TIMELINE -->
+    <section class="education-section reveal">
+      <h2 class="gradient-text page-title" style="margin-bottom: 60px; text-align: center;">Education
+        <span>Timeline</span>
+      </h2>
+      <div class="timeline-container">
+        <!-- Item 1: Secondary Education -->
+        <div class="timeline-wrapper right">
+          <div class="timeline-spacer"></div>
+          <div class="timeline-icon"></div>
+          <div class="timeline-card-container">
+            <div class="timeline-card">
+              <!-- Icon Wrapper Added Here -->
+              <div class="card-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+                </svg>
+              </div>
+              <h3>Secondary Education (10th grade)</h3>
+              <p class="year">2021 - 2022</p>
+              <p class="institution">Kendriya Vidyalaya No:3 Machhe Belagavi,Karnataka </p>
+            </div>
           </div>
         </div>
-      </div>
+
+        <!-- Item 2: High School -->
+        <div class="timeline-wrapper left">
+          <div class="timeline-spacer"></div>
+          <div class="timeline-icon"></div>
+          <div class="timeline-card-container">
+            <div class="timeline-card">
+              <!-- Icon Wrapper Added Here -->
+              <div class="card-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+                </svg>
+              </div>
+              <h3>High Secondary Education (12th grade)</h3>
+              <p class="year">2022 - 2024</p>
+              <p class="institution">Kendriya Vidyalaya No:1 AFS Sambra Belagavi,Karnataka</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: BCA -->
+        <div class="timeline-wrapper right">
+          <div class="timeline-spacer"></div>
+          <div class="timeline-icon"></div>
+          <div class="timeline-card-container">
+            <div class="timeline-card">
+              <!-- Icon Wrapper Added Here -->
+              <div class="card-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+                </svg>
+              </div>
+              <h3>Bachelor of Computer Applications (BCA)</h3>
+              <p class="year">2024 - 2027</p>
+              <p class="institution">Rani Channamma University</p>
+            </div>
+          </div>
+        </div>
     </section>
 
     <div class="footer-spacer"></div>
   </main>
 
   <script src="script.js"></script>
+  <script src="Particles.js"></script>
+  <script>
+    initParticles(document.getElementById('particles-bg'), {
+      particleColors: ["#34D399", "#059669", "#064E3B"],
+      particleCount: 500,
+      particleSpread: 10,
+      speed: 0.1,
+      particleBaseSize: 5,
+      moveParticlesOnHover: true,
+      particleHoverFactor: 1.5,
+      alphaParticles: false,
+      sizeRandomness: 1,
+      disableRotation: false
+    });
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>lucide.createIcons();</script>
+
+  <!-- From Uiverse.io by john_2426 — Juggler Loader Transition Overlay -->
+  <div class="loader-wrapper">
+    <div class="juggler">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm right-arm"></div>
+      <div class="arm left-arm"></div>
+    </div>
+    <div class="ball ball-1"></div>
+    <div class="ball ball-2"></div>
+    <div class="ball ball-3"></div>
+  </div>
 </body>
 
 </html>

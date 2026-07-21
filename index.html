@@ -7,6 +7,7 @@
   <title>Aniket Kurade — Software Engineer</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
 </head>
 
 <body class="home-body">
@@ -31,13 +32,14 @@
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-links">
-      <a href="index.html" class="nav-link active"><i class='bx bx-home-alt'></i></a>
-      <a href="about.html" class="nav-link"><i class='bx bx-user'></i></a>
-      <a href="projects.html" class="nav-link"><i class='bx bx-briefcase-alt-2'></i></a>
-      <a href="skills.html" class="nav-link"><i class='bx bx-code-alt'></i></a>
-      <a href="resume.html" class="nav-link"><i class='bx bx-file'></i> </a>
-      <a href="certificates.html" class="nav-link"><i class='bx bx-certification'></i> </a>
-      <a href="contact.html" class="nav-link"><i class='bx bx-envelope'></i></a>
+      <a href="index.html" class="nav-link active"><i data-lucide="home"></i></a>
+      <a href="about.html" class="nav-link "><i data-lucide="user"></i></a>
+      <a href="projects.html" class="nav-link "><i data-lucide="briefcase"></i></a>
+      <a href="skills.html" class="nav-link "><i data-lucide="code"></i></a>
+      <a href="resume.html" class="nav-link "><i data-lucide="file-text"></i></a>
+      <a href="certificates.html" class="nav-link "><i data-lucide="award"></i></a>
+      <a href="contact.html" class="nav-link "><i data-lucide="mail"></i></a>
+      <div class="pill-indicator"></div>
     </div>
     <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -62,15 +64,22 @@
     <section class="hero-section reveal" style="padding-top: 100px;">
       <div class="hero-content">
         <p class="hero-greeting">Hello, I'm</p>
-        <h1 class="hero-name">Aniket Kurade</h1>
-        <h2 class="hero-subtitle">Tech Enthusiast & Developer</h2>
-        <p class="hero-description">
+        <h1 class="hero-name">Aniket <span class="gradient-name">Kurade</span></h1>
+        <h2 class="hero-subtitle">
+          <div class="carousel-container">
+            <div class="carousel-text"><span>Creating</span> interactive website</div>
+            <div class="carousel-text"><span>Building</span> futerestic websites</div>
+            <div class="carousel-text"><span>Building </span>premieum web apps</div>
+            <div class="carousel-text"><span>Creating </span>interactive website</div>
+          </div>
+        </h2>
+        <p class="hero-description" id="hero-desc">
           A final-year Bachelor of Computer Applications (BCA) student who enjoys software development, problem-solving,
           and creating impactful digital experiences.
         </p>
         <div class="hero-actions">
-          <a href="projects.html" class="btn btn-primary">View My Work</a>
-          <a href="contact.html" class="btn btn-outline">Connect With Me</a>
+          <a href="projects.html" class="btn btn-primary hero-btn">View My Work</a>
+          <a href="contact.html" class="btn btn-outline hero-btn">Connect With Me</a>
         </div>
 
 
@@ -110,14 +119,87 @@
 
       <div class="hero-visual">
         <div class="profile-container">
-          <div class="animated-bg"></div>
-          <img src="my-img.png" alt="Aniket Kurade" class="profile-image">
+          <div id="avatar-root" style="width:100%;height:100%;position:relative;"></div>
         </div>
       </div>
     </section>
   </main>
 
+  <script type="module" src="/AvatarInit.jsx"></script>
   <script src="script.js"></script>
+  <script src="Particles.js"></script>
+  <script src="LightRays.js"></script>
+  <script>
+    (function () {
+      var preloaderEl = document.getElementById('preloader');
+      if (preloaderEl && window.initLightRays) {
+        var cleanupRays = window.initLightRays(preloaderEl, {
+          raysOrigin: 'top-center',
+          raysColor: '#0be6fa',
+          raysSpeed: 1.5,
+          lightSpread: 0.8,
+          rayLength: 1.2,
+          pulsating: false,
+          fadeDistance: 1.0,
+          saturation: 1.0,
+          followMouse: true,
+          mouseInfluence: 0.1,
+          noiseAmount: 0.1,
+          distortion: 0.05
+        });
+
+        var originalRemove = preloaderEl.remove || preloaderEl.parentNode.removeChild;
+        preloaderEl.remove = function () {
+          cleanupRays();
+          if (preloaderEl.parentNode) {
+            preloaderEl.parentNode.removeChild(preloaderEl);
+          }
+          // Run one-time typewriter animation for hero description
+          var descEl = document.getElementById('hero-desc');
+          if (descEl) {
+            var finalString = descEl.innerText.trim().replace(/\s+/g, ' ');
+            descEl.innerText = ''; // Clear it initially for typewriter effect
+            var i = 0;
+            var typeInterval = setInterval(function () {
+              if (i < finalString.length) {
+                descEl.innerHTML += finalString.charAt(i);
+                i++;
+              } else {
+                clearInterval(typeInterval);
+              }
+            }, 30); // 30ms per character
+          }
+        };
+      }
+    })();
+    window.initParticles({
+      particleColors: ["rgba(255, 255, 255, 0.8)", "rgba(161, 161, 170, 0.6)", "rgba(82, 82, 91, 0.4)"],
+      particleCount: 500,
+      particleSpread: 20,
+      speed: 0.1,
+      particleBaseSize: 5,
+      moveParticlesOnHover: false,
+      alphaParticles: false,
+      disableRotation: false
+    });
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>lucide.createIcons();</script>
+
+  <!-- From Uiverse.io by john_2426 — Juggler Loader Transition Overlay -->
+  <div class="loader-wrapper">
+    <div class="juggler">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm right-arm"></div>
+      <div class="arm left-arm"></div>
+    </div>
+    <div class="ball ball-1"></div>
+    <div class="ball ball-2"></div>
+    <div class="ball ball-3"></div>
+  </div>
 </body>
 
 </html>

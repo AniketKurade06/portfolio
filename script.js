@@ -128,20 +128,87 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('preloader-finished');
     }
 
-    // --- Premium Section Navigation Transitions ---
+    // --- Juggler Loader Transition ---
+    // TIMING CONSTANTS — must stay in sync with CSS values on .loader-wrapper:
+    //   CSS: transition: opacity 0.5s ease, visibility 0.5s ease
+    //   CSS: animation: ball1/2/3 6s infinite  (juggling phase = 0–50% = 3 s)
+    //
+    // OVERLAY_FADE_MS    = 500   → exact CSS transition duration; overlay is 100%
+    //                              opaque before navigation and 0% after fade-out.
+    // JUGGLER_DISPLAY_MS = 1500  → one full juggling rotation cycle (25% of 6 s).
+    const OVERLAY_FADE_MS = 500;    // matches: transition: opacity 0.5s ease
+    const JUGGLER_DISPLAY_MS = 1500; // one complete juggling rotation (25% × 6 s cycle)
+
+    const loaderWrapper = document.querySelector('.loader-wrapper');
     const navLinks = document.querySelectorAll('.nav-link');
+
+    // ── Phase 3 (Arrival) ─────────────────────────────────────────────────────
+    // The departure page navigated with the overlay already 100% opaque, so the
+    // new page must show the overlay INSTANTLY — no CSS fade-in.
+    //
+    // Strategy:
+    //   a) Suppress the CSS transition with a one-frame inline override.
+    //   b) Add `.fade-in` so the element is fully visible (opacity:1, visible).
+    //   c) After 2 rAFs the browser has committed the opaque frame; restore the
+    //      CSS transition.
+    //   d) After JUGGLER_DISPLAY_MS, call classList.remove('fade-in') — this is
+    //      the canonical trigger for the CSS transition engine, guaranteeing a
+    //      smooth opacity 1→0 fade-out with no hard cut or flash.
+    if (loaderWrapper && sessionStorage.getItem('juggler-transitioning') === '1') {
+        sessionStorage.removeItem('juggler-transitioning');
+
+        // a) Disable transition for one paint cycle so .fade-in appears instantly.
+        loaderWrapper.style.transition = 'none';
+        loaderWrapper.classList.add('fade-in');
+
+        // b) Two rAF ticks: first tick queues the paint, second confirms it's done.
+        //    Then restore the CSS transition so the scheduled fade-out will animate.
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                loaderWrapper.style.transition = ''; // hand back to CSS
+
+                // c) After the juggling display period, remove the class.
+                //    classList.remove triggers the CSS transition engine reliably
+                //    (opacity 1 → 0, visibility visible → hidden) for a smooth exit.
+                setTimeout(() => {
+                    loaderWrapper.classList.remove('fade-in');
+                }, JUGGLER_DISPLAY_MS);
+            });
+        });
+    }
+
+    // ── Phase 1 & 2 (Departure) ───────────────────────────────────────────────
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             const targetUrl = this.getAttribute('href');
-            if (targetUrl && targetUrl.endsWith('.html')) {
-                e.preventDefault();
-                document.body.classList.add('page-transitioning');
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 400); // 0.4s fade out
+            if (!targetUrl || !targetUrl.endsWith('.html')) return;
+
+            // Skip if already on the same page
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            if (targetUrl === currentPage) return;
+
+            e.preventDefault();
+
+            if (!loaderWrapper) {
+                // Fallback: navigate immediately if loader not present
+                window.location.href = targetUrl;
+                return;
             }
+
+            // Phase 1 — Fade overlay in.  CSS: transition: opacity 0.5s ease.
+            loaderWrapper.classList.add('fade-in');
+
+            // Phase 2 — Navigate only after the CSS opacity transition has fully
+            // completed (OVERLAY_FADE_MS = 500 ms = CSS transition duration).
+            // This guarantees the overlay is 100% opaque before the browser
+            // unloads the current page — no content flash beneath the overlay.
+            setTimeout(() => {
+                sessionStorage.setItem('juggler-transitioning', '1');
+                window.location.href = targetUrl;
+            }, OVERLAY_FADE_MS);
         });
     });
+
 
     // --- Reveal-on-Scroll Logic ---
     const revealElements = document.querySelectorAll('.reveal');
@@ -205,4 +272,102 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
+    // --- PillNav Logic ---
+    const navLinksArray = document.querySelectorAll('.nav-links .nav-link');
+    const pill = document.querySelector('.pill-indicator');
+
+    if (navLinksArray.length > 0 && pill && typeof gsap !== 'undefined') {
+        const activeLink = document.querySelector('.nav-links .nav-link.active') || navLinksArray[0];
+
+        function movePill(target, animate = true) {
+            if (!target) return;
+            const rect = target.getBoundingClientRect();
+            const parentRect = target.parentElement.getBoundingClientRect();
+
+            const left = rect.left - parentRect.left;
+            const width = rect.width;
+
+            if (animate) {
+                gsap.to(pill, {
+                    x: left,
+                    width: width,
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: "power3.easeOut"
+                });
+            } else {
+                gsap.set(pill, { x: left, width: width, opacity: 1 });
+            }
+
+            navLinksArray.forEach(link => {
+                if (link === target) {
+                    gsap.to(link, { color: "#120F17", duration: 0.3 });
+                } else {
+                    gsap.to(link, { color: "#ffffff", duration: 0.3 });
+                }
+            });
+        }
+
+        // Initialize after a tiny delay to ensure fonts/icons are rendered
+        setTimeout(() => {
+            movePill(activeLink, true);
+        }, 100);
+
+        navLinksArray.forEach(link => {
+            link.addEventListener('mouseenter', () => movePill(link));
+            link.addEventListener('mouseleave', () => movePill(activeLink));
+        });
+
+        window.addEventListener('resize', () => movePill(activeLink, false));
+    }
+
+    /* --- Orbiting Tech Stack JS --- */
+    function positionOrbits() {
+        const innerRadiusStr = getComputedStyle(document.documentElement).getPropertyValue('--inner-radius');
+        const outerRadiusStr = getComputedStyle(document.documentElement).getPropertyValue('--outer-radius');
+        if (!innerRadiusStr) return; // Skip if CSS variables aren't loaded
+
+        const innerRadius = parseFloat(innerRadiusStr);
+        const outerRadius = parseFloat(outerRadiusStr);
+
+        const innerIcons = document.querySelectorAll(".inner-ring .orbit-icon-wrapper");
+        innerIcons.forEach((icon, index) => {
+            const angle = (index * (360 / innerIcons.length)) * (Math.PI / 180);
+            icon.style.left = `calc(50% + ${Math.round(innerRadius * Math.cos(angle))}px - var(--icon-size)/2)`;
+            icon.style.top = `calc(50% + ${Math.round(innerRadius * Math.sin(angle))}px - var(--icon-size)/2)`;
+            icon.style.animation = `orbit-counter-clockwise 25s linear infinite`;
+        });
+
+        const outerIcons = document.querySelectorAll(".outer-ring .orbit-icon-wrapper");
+        outerIcons.forEach((icon, index) => {
+            const angle = (index * (360 / outerIcons.length)) * (Math.PI / 180);
+            icon.style.left = `calc(50% + ${Math.round(outerRadius * Math.cos(angle))}px - var(--icon-size)/2)`;
+            icon.style.top = `calc(50% + ${Math.round(outerRadius * Math.sin(angle))}px - var(--icon-size)/2)`;
+            icon.style.animation = `orbit-clockwise 40s linear infinite`;
+        });
+    }
+
+    const orbitContainer = document.querySelector(".orbit-container");
+    if (orbitContainer) {
+        positionOrbits();
+        window.addEventListener('resize', positionOrbits);
+
+        orbitContainer.addEventListener("mouseenter", () => {
+            document.querySelectorAll(".orbit-icon-wrapper").forEach(el => el.style.animationPlayState = "paused");
+        });
+        orbitContainer.addEventListener("mouseleave", () => {
+            document.querySelectorAll(".orbit-icon-wrapper").forEach(el => el.style.animationPlayState = "running");
+        });
+    }
 });
+function showNotDeployedAlert() {
+    Swal.fire({
+        title: 'Deployment in Progress!',
+        text: 'This project is currently under active development and has not been deployed live yet.',
+        icon: 'info',
+        confirmButtonText: 'Got it',
+        confirmButtonColor: '#3085d6'
+    });
+}
