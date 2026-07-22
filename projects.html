@@ -5,26 +5,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects - Aniket Kurade</title>
-  <link rel="stylesheet" href="/src/styles/style.css">
+
+  <!-- Relative paths fix -->
+  <link rel="stylesheet" href="./src/styles/style.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/src/styles/Particles.css">
-  <script type="module" src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="./src/styles/Particles.css">
+
+  <!-- SweetAlert2 CDN (Loaded globally) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
   <div id="particles-bg" class="particles-container"></div>
 
-
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-links">
-      <a href="index.html" class="nav-link "><i data-lucide="home"></i></a>
-      <a href="about.html" class="nav-link "><i data-lucide="user"></i></a>
+      <a href="index.html" class="nav-link"><i data-lucide="home"></i></a>
+      <a href="about.html" class="nav-link"><i data-lucide="user"></i></a>
       <a href="projects.html" class="nav-link active"><i data-lucide="briefcase"></i></a>
-      <a href="skills.html" class="nav-link "><i data-lucide="code"></i></a>
-      <a href="resume.html" class="nav-link "><i data-lucide="file-text"></i></a>
-      <a href="certificates.html" class="nav-link "><i data-lucide="award"></i></a>
-      <a href="contact.html" class="nav-link "><i data-lucide="mail"></i></a>
+      <a href="skills.html" class="nav-link"><i data-lucide="code"></i></a>
+      <a href="resume.html" class="nav-link"><i data-lucide="file-text"></i></a>
+      <a href="certificates.html" class="nav-link"><i data-lucide="award"></i></a>
+      <a href="contact.html" class="nav-link"><i data-lucide="mail"></i></a>
       <div class="pill-indicator"></div>
     </div>
     <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Menu">
@@ -54,7 +57,7 @@
         <!-- Project 1 -->
         <div class="project-card">
           <div class="project-image-wrapper">
-            <img src="college-project.png" alt="Portfolio Website" class="project-card-img" />
+            <img src="college-project.png" alt="College Project Preview" class="project-card-img" />
           </div>
           <div class="project-content">
             <h3 class="project-title">College Project</h3>
@@ -71,7 +74,8 @@
                 </svg>
                 Live Demo
               </a>
-              <a href="https://github.com/AniketKurade06" class="project-btn secondary" target="_blank">
+              <a href="https://github.com/AniketKurade06" class="project-btn secondary" target="_blank"
+                rel="noopener noreferrer">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path
                     d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
@@ -85,7 +89,7 @@
         <!-- Project 2 Placeholder -->
         <div class="project-card">
           <div class="project-image-wrapper">
-            <img src="upcoming-project.png" alt="Portfolio Website" class="project-card-img" />
+            <img src="upcoming-project.png" alt="Upcoming Project Preview" class="project-card-img" />
           </div>
           <div class="project-content">
             <h3 class="project-title">Upcoming Project</h3>
@@ -102,7 +106,8 @@
                 </svg>
                 Live Demo
               </a>
-              <a href="https://github.com/AniketKurade06" class="project-btn secondary" target="_blank">
+              <a href="https://github.com/AniketKurade06" class="project-btn secondary" target="_blank"
+                rel="noopener noreferrer">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path
                     d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
@@ -115,10 +120,8 @@
       </div>
 
       <div class="metrics-grid">
-
         <!-- Metric 1: Projects Completed -->
         <div class="metric-card">
-          <!-- Folder/Project Icon -->
           <svg class="metric-icon icon-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -130,7 +133,6 @@
 
         <!-- Metric 2: Ideas Brewing -->
         <div class="metric-card">
-          <!-- Lightbulb/Idea Icon -->
           <svg class="metric-icon icon-amber" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -144,7 +146,6 @@
 
         <!-- Metric 3: LeetCode Solved -->
         <div class="metric-card">
-          <!-- Code/Terminal Icon -->
           <svg class="metric-icon icon-emerald" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -153,16 +154,19 @@
           <p class="metric-number">10+</p>
           <p class="metric-label">LeetCode Solved</p>
         </div>
-
       </div>
-
     </section>
 
     <div class="footer-spacer"></div>
   </main>
 
-  <script type="module" src="/src/scripts/script.js"></script>
-  <script type="module" src="/src/scripts/Particles.js"></script>
+  <!-- Global CDN Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Relative paths fix for local JS modules -->
+  <script type="module" src="./src/scripts/script.js"></script>
+  <script type="module" src="./src/scripts/Particles.js"></script>
   <script type="module">
     initParticles(document.getElementById('particles-bg'), {
       particleColors: ["#ffffff", "#8B5CF6", "#38BDF8"],
@@ -178,11 +182,9 @@
     });
   </script>
 
-  <script type="module" src="https://unpkg.com/lucide@latest"></script>
-  <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script type="module">lucide.createIcons();</script>
 
-  <!-- From Uiverse.io by john_2426 — Juggler Loader Transition Overlay -->
+  <!-- Juggler Loader Transition Overlay -->
   <div class="loader-wrapper">
     <div class="juggler">
       <div class="head"></div>

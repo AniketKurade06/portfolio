@@ -315,6 +315,10 @@ document.addEventListener('DOMContentLoaded', () => {
             movePill(activeLink, true);
         }, 100);
 
+        window.addEventListener('load', () => {
+            movePill(activeLink, false);
+        });
+
         navLinksArray.forEach(link => {
             link.addEventListener('mouseenter', () => movePill(link));
             link.addEventListener('mouseleave', () => movePill(activeLink));
@@ -362,12 +366,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-function showNotDeployedAlert() {
-    Swal.fire({
-        title: 'Deployment in Progress!',
-        text: 'This project is currently under active development and has not been deployed live yet.',
-        icon: 'info',
-        confirmButtonText: 'Got it',
-        confirmButtonColor: '#3085d6'
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all "Live Demo" buttons
+    const liveDemoButtons = document.querySelectorAll('.project-btn.primary');
+
+    liveDemoButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop default jump-to-top anchor behavior
+
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: 'Deployment in Progress!',
+                    text: 'This project is currently under active development and has not been deployed live yet.',
+                    icon: 'info',
+                    confirmButtonText: 'Got it',
+                    confirmButtonColor: '#8B5CF6',
+                    background: '#121218',
+                    color: '#ffffff',
+                    iconColor: '#38BDF8'
+                });
+            } else {
+                console.error('SweetAlert2 script is missing or blocked.');
+            }
+        });
     });
-}
+});
